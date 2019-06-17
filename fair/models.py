@@ -28,6 +28,7 @@ class Post(models.Model):
     photo = models.ManyToManyField(Image)
     lead = models.CharField('Lead Noticia', max_length=500)
     text = models.TextField('Texto Noticia')
+    author = models.CharField('Autor', max_length=500)
 
     #metadata
     created = models.DateTimeField(auto_now_add=True)

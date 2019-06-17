@@ -10,6 +10,11 @@ urlpatterns = [
     path(
         route='',
         view=views.IndexView.as_view(),
-        name='feed'
+        name='index'
+        ),
+    path(
+        route='noticia/<int:pk>',
+        view=views.NoticeDetailView.as_view(),
+        name='notice'
         ),
 ]

@@ -1,4 +1,7 @@
 {% extends "base/base.html" %}
+{% block title_name %}
+Feria del Libro Itagüí
+{% endblock title_name %}
 {% block container %}
 {% load static %}   
 <!--================ Hero Banner start =================-->
@@ -202,18 +205,18 @@
                 {% for notice in notices|slice:":3"  %}
                 <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
                     <div class="card card-blog">
-                        <img class="card-img rounded-0" src="{{notice.photo.all.0.photo.url}}" height="290px" width="390px" alt="">
+                        <img class="card-img rounded-0" src="{{notice.photo.all.0.photo.url}}" height="290px" width="390px" href="{%url 'fair:notice' notice.pk%}">
                         <div class="card-blog__body">
-                            <h3><a href="{% static '#">{{notice.title}}</a></h3>
+                            <h3><a href="{%url 'fair:notice' notice.pk%}">{{notice.title}}</a></h3>
                             <ul class="card-blog__info">
                                     
-                                <li><a href="{% static '#"><i class="ti-notepad"></i>{{notice.created}}</a></li>
+                                <li><a href="{% static '#"><i class="ti-notepad"></i>{{notice.created|date:"M d, Y"}}</a></li>
                                 <!-- <li><a href="{% static '#"><i class="ti-themify-favicon"></i>1 Comment</a></li> -->
                             </ul>
                             <p>{{notice.lead}}</p>
                         </div>
                         <div class="card-blog__footer">
-                            <a href="">Leer mas<i class="ti-arrow-right"></i></a>
+                            <a href="{%url 'fair:notice' notice.pk%}">Leer mas<i class="ti-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
