@@ -1,4 +1,7 @@
 {% extends "base/base.html" %}
+{% block title_name %}
+Feria del Libro Itagüí
+{% endblock title_name %}
 {% block container %}
 {% load static %}
 <section class="hero-banner hero-banner--sm">
@@ -82,8 +85,6 @@
       </div>
       <div class="col-lg-4">
         <div class="blog_right_sidebar">
-
-
           <aside class="single_sidebar_widget popular_post_widget">
             <h3 class="widget_title">Otras Noticias</h3>
             {% for new in  notices|slice:":4"%}
@@ -105,8 +106,50 @@
 
         </div>
       </div>
+      
+    </div>
+    <div class="navigation-area">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                <div class="thumb">
+                    <a href="{%url 'fair:notice' notices.0.pk%}">
+                        <img class="img-fluid" src="{{notices.0.photo.all.0.photo.url}}" height="60px" width="60px">
+                    </a>
+                </div>
+                <div class="arrow">
+                    <a href="{%url 'fair:notice' notices.0.pk%}">
+                        <span class="lnr text-white lnr-arrow-left"></span>
+                    </a>
+                </div>
+                <div class="detials">
+                    <p>Anterior Noticia</p>
+                    <a href="{%url 'fair:notice' notices.0.pk%}">
+                        <h4>{{notices.0.title}}</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                <div class="detials">
+                    <p>Siguiente Noticia</p>
+                    <a href="{%url 'fair:notice' notices.1.pk%}">
+                        <h4>{{notices.1.title}}</h4>
+                    </a>
+                </div>
+                <div class="arrow">
+                    <a href="{%url 'fair:notice' notices.1.pk%}">
+                        <span class="lnr text-white lnr-arrow-right"></span>
+                    </a>
+                </div>
+                <div class="thumb">
+                    <a href="{%url 'fair:notice' notices.1.pk%}">
+                        <img class="img-fluid" src="{{notices.1.photo.all.0.photo.url}}" height="60px" width="60px">
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
   </div>
+  
 </section>
 <!--================
 {% endblock%}

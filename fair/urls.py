@@ -17,4 +17,9 @@ urlpatterns = [
         view=views.NoticeDetailView.as_view(),
         name='notice'
         ),
+    path(
+        route='pronto',
+        view=views.SoonView.as_view(),
+        name='soon'
+        ),
 ]

@@ -18,30 +18,15 @@ Feria del Libro Itagüí
     <section>
         <div class="container static__single-position">
             <div class="row">
+                {% for topic in topics|slice:":4"  %}
                 <div class="col-md-6 col-xl-3 mb-4 mb-xl-0">
                     <div class="card static__single">
-                        <h3>1</h3>
-                        <h4>Edición Realizada</h4>
+                        <h3>{{topic.number}}</h3>
+                        <h4>{{topic.title}}</h4>
                     </div>
                 </div>
-                <div class="col-md-6 col-xl-3 mb-4 mb-xl-0">
-                    <div class="card static__single">
-                        <h3>1000</h3>
-                        <h4>Visitantes</h4>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-3 mb-4 mb-xl-0">
-                    <div class="card static__single">
-                        <h3>16</h3>
-                        <h4>Stands</h4>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-3 mb-4 mb-xl-0">
-                    <div class="card static__single">
-                        <h3>8</h3>
-                        <h4>Encuentros Literarios</h4>
-                    </div>
-                </div>
+                {% endfor %}
+              
             </div>
         </div>
     </section>
@@ -79,76 +64,33 @@ Feria del Libro Itagüí
 
 
     <!--================ Subject section start =================-->
-    <section class="section-margin">
+    <section class="section-margin" id="programs">
         <div class="container">
             <div class="section-intro text-center pb-65px">
                 <h2 class="section-intro__title">Nuestros programas</h2>
                 <p></p>
             </div>
             <div class="row">
+                {% for program in programs|slice:":4"  %}
+                  
+               
                 <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 mb-xl-0">
                     <div class="card card-subject">
                         <div class="card-subject__img">
-                            <img class="card-img rounded-0" src="{% static 'img/home/subject-1.jpg' %}" height="212px" width="263px" alt="">
+                            <img class="card-img rounded-0" src="{{program.photo.url}}" height="212px" width="263px" alt="">
                             <div class="card-subject__imgOverlay">
                                 <img src="{% static 'img/home/hover-icon.png' %}" %}" alt="">
                             </div>
                         </div>
                         <div class="card-subject__body">
-                            <h3><a href="{% static '#">Ciclos Literarios</a></h3>
-                            <p>Dominion there fifth fowl eving heaven in life you're over us moved creepeth morn make
-                            </p>
+                            <h3><a href="{% static '#">{{program.title}}</a></h3>
+                            <p>{{program.text}} </p>
                         </div>
                     </div>
                 </div>
+                 {% endfor %}
 
-                <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 mb-xl-0">
-                    <div class="card card-subject">
-                        <div class="card-subject__img">
-                            <img class="card-img rounded-0" src="{% static 'img/home/subject-2.jpg' %}" %}" height="212px" width="263px">
-                            <div class="card-subject__imgOverlay">
-                                <img src="{% static 'img/home/hover-icon.png' %}" %}" alt="">
-                            </div>
-                        </div>
-                        <div class="card-subject__body">
-                            <h3><a href="{% static '#">Letras de Colores</a></h3>
-                            <p>Dominion there fifth fowl eving heaven in life you're over us moved creepeth morn make
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 mb-xl-0">
-                    <div class="card card-subject">
-                        <div class="card-subject__img">
-                            <img class="card-img rounded-0" src="{% static 'img/home/subject-3.jpg' %}" height="212px" width="263px" alt="">
-                            <div class="card-subject__imgOverlay">
-                                <img src="{% static 'img/home/hover-icon.png' %}" %}" alt="">
-                            </div>
-                        </div>
-                        <div class="card-subject__body">
-                            <h3><a href="{% static '#">Al aire Libro</a></h3>
-                            <p>Dominion there fifth fowl eving heaven in life you're over us moved creepeth morn make
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4 col-xl-3 mb-4 mb-xl-0">
-                    <div class="card card-subject">
-                        <div class="card-subject__img">
-                            <img class="card-img rounded-0" src="{% static 'img/home/subject-4.jpg' %}" height="212px" width="263px"alt="">
-                            <div class="card-subject__imgOverlay">
-                                <img src="{% static 'img/home/hover-icon.png' %}"  alt="">
-                            </div>
-                        </div>
-                        <div class="card-subject__body">
-                            <h3><a href="{% static '#">Café Literario</a></h3>
-                            <p>Dominion there fifth fowl eving heaven in life you're over us moved creepeth morn make
-                            </p>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
             <!-- <div class="col-12 text-center mt-5 pt-xl-4">
                 <a class="button" href="{% static '#">View All Practices <span class="align-middle"><i
@@ -196,7 +138,7 @@ Feria del Libro Itagüí
 
 
     <!--================ Blog section start =================-->
-    <section class="section-margin">
+    <section class="section-margin" id="notices">
         <div class="container">
             <div class="section-intro text-center pb-65px">
                 <h2 class="section-intro__title">Noticias</h2>
@@ -204,8 +146,8 @@ Feria del Libro Itagüí
             <div class="row">
                 {% for notice in notices|slice:":3"  %}
                 <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
-                    <div class="card card-blog">
-                        <img class="card-img rounded-0" src="{{notice.photo.all.0.photo.url}}" height="290px" width="390px" href="{%url 'fair:notice' notice.pk%}">
+                    <div class="card card-blog" href="{%url 'fair:notice' notice.pk%}">
+                        <img class="card-img rounded-0" src="{{notice.photo.all.0.photo.url}}" height="290px" width="390px" >
                         <div class="card-blog__body">
                             <h3><a href="{%url 'fair:notice' notice.pk%}">{{notice.title}}</a></h3>
                             <ul class="card-blog__info">
@@ -227,3 +169,13 @@ Feria del Libro Itagüí
     </section>
     <!--================ Blog section end =================-->
     {% endblock container %}
+    {% block sripts %}
+   
+    <script>
+        function Translate(go_to){
+                div_to = "#".concat(go_to);
+                $('html, body').animate({ scrollTop: $(div_to).position().top }, 'slow');
+            }
+    </script>
+      
+    {% endblock sripts %}

@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, DetailView
 
 # Models
-from fair.models import Guest, Post
+from fair.models import Guest, Post, Program, Topic
 
 class IndexView(TemplateView):
     """Fair index"""
@@ -15,6 +15,8 @@ class IndexView(TemplateView):
         kwargs.setdefault('view', self)
         kwargs['guests'] = Guest.objects.all()
         kwargs['notices'] = Post.objects.all().order_by('-created')
+        kwargs['programs'] = Program.objects.all().order_by('-created')
+        kwargs['topics'] = Topic.objects.all()
         if self.extra_context is not None:
             kwargs.update(self.extra_context)
         return kwargs
@@ -32,3 +34,7 @@ class NoticeDetailView(DetailView):
             kwargs['notices'] = Post.objects.all().exclude(
                 pk=self.object.pk).order_by('-created')
         return super().get_context_data(**kwargs)
+
+class SoonView(TemplateView):
+    """SoonView index"""
+    template_name = 'base/soon.html'

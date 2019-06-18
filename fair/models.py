@@ -10,7 +10,6 @@ class Image(models.Model):
     footer = models.CharField(
         'Pie de foto',
         max_length=255,
-        null=True, blank=True
     )
     photo = models.ImageField(
         'Foto',
@@ -35,7 +34,7 @@ class Post(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        """returrn title"""
+        """return title"""
         return self.title
 
 class Guest(models.Model):
@@ -50,4 +49,30 @@ class Guest(models.Model):
     def __str__(self):
         """returrn title"""
         return self.title
+
+class Program(models.Model):
+    """Programs model """
+
+    title = models.CharField('Título', max_length=500)
+    photo = models.ImageField(
+        'Foto',
+        upload_to='section/programs')
+    text = models.TextField('Descripción Programa')
+
+    #metadata
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        """return title"""
+        return self.title
+
+class Topic(models.Model):
+    """Topics models"""
+    title = models.CharField('Título', max_length=500)
+    number = models.CharField('Número', max_length=500)
+
+    def __str__(self):
+        """return topic and number"""
+        return '{}: {}'.format(self.title,self.number)
 
