@@ -5,6 +5,7 @@ __pycache__/
 media/
 bookfair/settings.py
 bookfair/settings-prod.py
+prod/
 # C extensions
 *.so
 
