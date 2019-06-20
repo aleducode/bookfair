@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 media/
+bookfair/settings.py
+bookfair/settings-prod.py
 # C extensions
 *.so
 
